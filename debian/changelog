@@ -1,0 +1,13 @@
+ros-melodic-usb-cam-controllers (0.0.4-0stretch) stretch; urgency=high
+
+  * No changes from 0.0.3 (just bump the version number because 0.0.3 for kinetic already released)
+
+ -- yoshito <yoshito@todo.todo>  Sun, 24 Mar 2019 15:00:00 -0000
+
+ros-melodic-usb-cam-controllers (0.0.3-0stretch) stretch; urgency=high
+
+  * Initial release for melodic distro
+
+ -- yoshito <yoshito@todo.todo>  Sun, 24 Mar 2019 15:00:00 -0000
+
+
