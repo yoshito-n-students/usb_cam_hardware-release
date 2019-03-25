@@ -1,3 +1,29 @@
+## usb_cam_hardware (melodic) - 0.0.4-0
+
+The packages in the `usb_cam_hardware` repository were released into the `melodic` distro by running `/usr/bin/bloom-release --rosdistro melodic --edit usb_cam_hardware` on `Mon, 25 Mar 2019 08:58:56 -0000`
+
+These packages were released:
+- `usb_cam_controllers`
+- `usb_cam_hardware`
+- `usb_cam_hardware_interface`
+
+Version of package(s) in repository `usb_cam_hardware`:
+
+- upstream repository: https://github.com/yoshito-n-students/usb_cam_hardware.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `0.0.3-0`
+- new version: `0.0.4-0`
+
+Versions of tools used:
+
+- bloom version: `0.7.2`
+- catkin_pkg version: `0.4.10`
+- rosdep version: `0.15.1`
+- rosdistro version: `0.7.2`
+- vcstools version: `0.1.40`
+
+
 ## usb_cam_hardware (melodic) - 0.0.3-0
 
 The packages in the `usb_cam_hardware` repository were released into the `melodic` distro by running `/usr/bin/bloom-release --rosdistro melodic --edit usb_cam_hardware` on `Mon, 25 Mar 2019 08:23:51 -0000`
