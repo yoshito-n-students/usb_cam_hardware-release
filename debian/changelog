@@ -1,0 +1,7 @@
+ros-melodic-usb-cam-hardware-interface (0.0.3-0bionic) bionic; urgency=high
+
+  * Initial release for melodic distro
+
+ -- yoshito <yoshito@todo.todo>  Sun, 24 Mar 2019 15:00:00 -0000
+
+
