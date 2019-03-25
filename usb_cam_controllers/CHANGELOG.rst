@@ -2,14 +2,6 @@
 Changelog for package usb_cam_controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.0.3 (2019-03-20)
+0.0.3 (2019-03-25)
 ------------------
-* Fix install commands in CMakeLists.txt (install plugins.xml)
-
-0.0.2 (2019-03-19)
-------------------
-* Add install commands in CMakeLists.txt
-
-0.0.1 (2019-03-19)
-------------------
-* Initial release
+* Initial release for melodic distro
