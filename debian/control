@@ -1,0 +1,12 @@
+Source: ros-noetic-usb-cam-hardware
+Section: misc
+Priority: optional
+Maintainer: Yoshito Okada <yoshito@todo.todo>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin, ros-noetic-controller-manager, ros-noetic-hardware-interface, ros-noetic-nodelet, ros-noetic-pluginlib, ros-noetic-roscpp, ros-noetic-usb-cam-hardware-interface
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-noetic-usb-cam-hardware
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-controller-manager, ros-noetic-hardware-interface, ros-noetic-nodelet, ros-noetic-pluginlib, ros-noetic-roscpp, ros-noetic-usb-cam-hardware-interface
+Description: The usb_cam_hardware package
