@@ -1,0 +1,25 @@
+ros-kinetic-usb-cam-hardware-interface (0.0.6-1xenial) xenial; urgency=high
+
+
+
+ -- Yoshito Okada <yoshito@todo.todo>  Thu, 09 Jul 2020 15:00:00 -0000
+
+ros-kinetic-usb-cam-hardware-interface (0.0.3-1xenial) xenial; urgency=high
+
+  * No changes (released along with other packages)
+
+ -- yoshito <yoshito@todo.todo>  Tue, 19 Mar 2019 15:00:00 -0000
+
+ros-kinetic-usb-cam-hardware-interface (0.0.2-1xenial) xenial; urgency=high
+
+  * Add install commands in CMakeLists.txt
+
+ -- yoshito <yoshito@todo.todo>  Mon, 18 Mar 2019 15:00:00 -0000
+
+ros-kinetic-usb-cam-hardware-interface (0.0.1-1xenial) xenial; urgency=high
+
+  * Initial release
+
+ -- yoshito <yoshito@todo.todo>  Mon, 18 Mar 2019 15:00:00 -0000
+
+
