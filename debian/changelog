@@ -1,0 +1,19 @@
+ros-melodic-usb-cam-controllers (0.1.1-1bionic) bionic; urgency=high
+
+  * Bump minor version to 0.1.X to indicate melodic release
+
+ -- Yoshito Okada <yoshito@todo.todo>  Thu, 09 Jul 2020 15:00:00 -0000
+
+ros-melodic-usb-cam-controllers (0.0.4-1bionic) bionic; urgency=high
+
+  * No changes from 0.0.3 (just bump the version number because 0.0.3 for kinetic already released)
+
+ -- yoshito <yoshito@todo.todo>  Sun, 24 Mar 2019 15:00:00 -0000
+
+ros-melodic-usb-cam-controllers (0.0.3-1bionic) bionic; urgency=high
+
+  * Initial release for melodic distro
+
+ -- yoshito <yoshito@todo.todo>  Sun, 24 Mar 2019 15:00:00 -0000
+
+

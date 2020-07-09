@@ -1,0 +1,12 @@
+Source: ros-melodic-usb-cam-controllers
+Section: misc
+Priority: optional
+Maintainer: Yoshito Okada <yoshito@todo.todo>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-camera-info-manager, ros-melodic-catkin, ros-melodic-controller-interface, ros-melodic-controller-manager, ros-melodic-cv-bridge, ros-melodic-image-transport, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-sensor-msgs, ros-melodic-usb-cam-hardware-interface
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-melodic-usb-cam-controllers
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-camera-info-manager, ros-melodic-controller-interface, ros-melodic-controller-manager, ros-melodic-cv-bridge, ros-melodic-image-transport, ros-melodic-pluginlib, ros-melodic-roscpp, ros-melodic-sensor-msgs, ros-melodic-usb-cam-hardware-interface
+Description: The usb_cam_controllers package
