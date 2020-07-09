@@ -2,9 +2,13 @@
 Changelog for package usb_cam_controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.1.1 (2020-07-10)
+0.2.1 (2020-07-10)
 ------------------
-* Bump minor version to 0.1.X to indicate melodic release
+* Bump minor version to 0.2.X to indicate noetic release
+
+0.0.5 (2020-05-28)
+------------------
+* Port to noetic distro
 
 0.0.4 (2019-03-25)
 ------------------
