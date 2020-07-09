@@ -33,6 +33,7 @@ protected:
   virtual bool initImpl(usb_cam_hardware_interface::PacketInterface *hw, ros::NodeHandle &root_nh,
                         ros::NodeHandle &controller_nh) {
     // init libavcodec
+    avcodec_register_all();
     av_log_set_level(AV_LOG_FATAL);
 
     // find h264 decoder
@@ -72,60 +73,54 @@ protected:
     packet.size = packet_iface_.getLength();
     packet.data = const_cast< uint8_t * >(packet_iface_.getStartAs< uint8_t >());
 
-    // send the packet to the decoder
-    if (avcodec_send_packet(decoder_ctx_.get(), &packet) < 0) {
-      ROS_ERROR_STREAM("Cannot send a packet to decoder (codec id: " << CodecId << ")");
-      return;
-    }
-
-    while (true) {
-      // allocate a frame for decoded data
+    // repeat decoding until all data in the packet are consumed
+    while (packet.size > 0) {
+      // decode one frame
       boost::shared_ptr< AVFrame > frame(av_frame_alloc(), deleteAVFrame);
-      if (!frame) {
-        ROS_ERROR_STREAM("Cannot allocate a frame");
+      int got_frame;
+      const int len(avcodec_decode_video2(decoder_ctx_.get(), frame.get(), &got_frame, &packet));
+      if (len < 0) {
+        ROS_ERROR("Cannot decode a frame");
         return;
       }
 
-      // receive the decoded data from the decoder
-      const int res(avcodec_receive_frame(decoder_ctx_.get(), frame.get()));
-      if (res == AVERROR(EAGAIN) || res == AVERROR_EOF) {
-        // no more frames in the packet
-        return;
-      } else if (res < 0) {
-        ROS_ERROR("Cannot receive a frame");
-        return;
+      // publish the decoded frame
+      if (got_frame > 0) {
+        // allocate output message
+        const sensor_msgs::ImagePtr out(new sensor_msgs::Image());
+        const int data_size(av_image_get_buffer_size(DstFormat, frame->width, frame->height, 1));
+        out->header.stamp = packet_iface_.getStamp();
+        out->height = frame->height;
+        out->width = frame->width;
+        out->encoding = *DstEncoding;
+        out->step = data_size / frame->height;
+        out->data.resize(data_size);
+
+        // layout data by converting color spaces (YUV -> RGB)
+        boost::shared_ptr< SwsContext > convert_ctx(
+            sws_getContext(
+                // src formats
+                frame->width, frame->height,
+                toUndeprecated(static_cast< AVPixelFormat >(frame->format)),
+                // dst formats
+                frame->width, frame->height, DstFormat,
+                // flags & filters
+                SWS_FAST_BILINEAR, NULL, NULL, NULL),
+            sws_freeContext);
+        int stride(out->step);
+        uint8_t *dst(&out->data[0]);
+        sws_scale(convert_ctx.get(),
+                  // src data
+                  frame->data, frame->linesize, 0, frame->height,
+                  // dst data
+                  &dst, &stride);
+
+        publisher_.publish(out);
       }
 
-      // allocate output message
-      const sensor_msgs::ImagePtr out(new sensor_msgs::Image());
-      const int data_size(av_image_get_buffer_size(DstFormat, frame->width, frame->height, 1));
-      out->header.stamp = packet_iface_.getStamp();
-      out->height = frame->height;
-      out->width = frame->width;
-      out->encoding = *DstEncoding;
-      out->step = data_size / frame->height;
-      out->data.resize(data_size);
-
-      // layout data by converting color spaces
-      boost::shared_ptr< SwsContext > convert_ctx(
-          sws_getContext(
-              // src formats
-              frame->width, frame->height,
-              toUndeprecated(static_cast< AVPixelFormat >(frame->format)),
-              // dst formats
-              frame->width, frame->height, DstFormat,
-              // flags & filters
-              SWS_FAST_BILINEAR, NULL, NULL, NULL),
-          sws_freeContext);
-      int stride(out->step);
-      uint8_t *dst(&out->data[0]);
-      sws_scale(convert_ctx.get(),
-                // src data
-                frame->data, frame->linesize, 0, frame->height,
-                // dst data
-                &dst, &stride);
-
-      publisher_.publish(out);
+      // consume data in the packet
+      packet.size -= len;
+      packet.data += len;
     }
   }
 
