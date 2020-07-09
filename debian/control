@@ -1,0 +1,12 @@
+Source: ros-kinetic-usb-cam-controllers
+Section: misc
+Priority: optional
+Maintainer: Yoshito Okada <yoshito@todo.todo>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-camera-info-manager, ros-kinetic-catkin, ros-kinetic-controller-interface, ros-kinetic-controller-manager, ros-kinetic-cv-bridge, ros-kinetic-image-transport, ros-kinetic-pluginlib, ros-kinetic-roscpp, ros-kinetic-sensor-msgs, ros-kinetic-usb-cam-hardware-interface
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-usb-cam-controllers
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kinetic-camera-info-manager, ros-kinetic-controller-interface, ros-kinetic-controller-manager, ros-kinetic-cv-bridge, ros-kinetic-image-transport, ros-kinetic-pluginlib, ros-kinetic-roscpp, ros-kinetic-sensor-msgs, ros-kinetic-usb-cam-hardware-interface
+Description: The usb_cam_controllers package
